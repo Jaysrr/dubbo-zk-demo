@@ -1,0 +1,14 @@
+# 防止端口冲突
+server:
+  port: 8002
+
+dubbo:
+  application:
+    name: order-consumer
+  registry:
+    #  注册中心地址
+#    address: multicast://224.5.6.7:1234
+    address: zookeeper://192.168.211.14:2181
+  #关闭对于provider的检查
+  consumer:
+    check: false

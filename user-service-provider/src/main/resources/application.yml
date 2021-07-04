@@ -1,0 +1,25 @@
+server:
+  port: 8001
+
+dubbo:
+  application:
+    name: user-provider
+  registry:
+    # zk注册中心地址
+    address: zookeeper://192.168.211.14:2181
+    #    address: zookeeper://127.0.0.1:2181
+    # 超时时间,毫秒
+    timeout: 6000
+  # 元数据中心地址(这些数据只是provider自己需要，而不需要进入注册中心)
+  # 可以用一些配置中心(如redis\apollo)等 这里暂用zk
+  #元数据中心的数据只是给自己使用的，改动不需要告知对端，比如服务端修改了元数据，不需要通知消费端。
+  #这样注册中心存储的数据减少，同时极大地减少了因为配置修改，导致注册中心频繁通知监听者的次数,从而大大减轻注册中心的压力。
+  metadata-report:
+    address: zookeeper://192.168.211.13:2181
+  protocol:
+    # 协议名称
+    name: dubbo
+    # 协议端口
+    port: 20800
+  scan:
+    base-packages: com.jay.demo.provider.service

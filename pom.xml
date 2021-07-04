@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jay</groupId>
+    <artifactId>dubbo-zk-demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <springboot.version>2.5.2</springboot.version>
+        <dubbo.version>2.7.3</dubbo.version>
+        <lombok.version>1.18.10</lombok.version>
+     </properties>
+
+    <modules>
+        <module>user-service-provider</module>
+        <module>order-service-consumer</module>
+        <module>demo-interface</module>
+    </modules>
+
+    <dependencyManagement> <!--<dependencyManagement>可以保证子pom也按照这个版本来导入-->
+        <dependencies>
+
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <optional>true</optional>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+            </dependency>
+
+            <!--dubbo-->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <!--zk客户端 curator-->
+            <!--<dependency>-->
+                <!--<groupId>org.apache.dubbo</groupId>-->
+                <!--<artifactId>dubbo-dependencies-zookeeper</artifactId>-->
+                <!--<version>${dubbo.version}</version>-->
+                <!--<type>pom</type>-->
+            <!--</dependency>-->
+
+
+
+        </dependencies>
+
+    </dependencyManagement>
+
+
+</project>
